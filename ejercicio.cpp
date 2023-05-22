@@ -1,11 +1,23 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <typeinfo>
 
-#include "libro.hpp"
+#include "validators.hpp"
+
+#include "materialBibliografico.hpp"
 #include "biblioteca.hpp"
+#include "usuario.hpp"
+#include "usuarioInvitado.hpp"
+#include "usuarioPremium.hpp"
+#include "libro.hpp"
 #include "bibliotecaService.hpp"
+#include "usuarioPremium.cpp"
+#include "validators.cpp"
+#include "usuarioInvitado.cpp"
+#include "materialBibliografico.cpp"
 #include "biblioteca.cpp"
+#include "usuario.cpp"
 #include "libro.cpp"
 #include "bibliotecaService.cpp"
 
@@ -16,30 +28,43 @@ using namespace std;
 int main() {
   Biblioteca biblioteca;
   BibliotecaService amigoBiblioteca;
-
-  while (true) {
-    cout << "¿Que desea hacer?"<<endl<<"(1) Mostrar libros"<<endl<<"(2) Solicitar libro"<<endl<<"(3) Devolver libro"<<endl<<"(4) Mostrar libros prestados"<<endl<<"(5) Salir" << endl;
-    int eleccion;
-    cin >> eleccion;
-
-    if (eleccion == 1) {
-      biblioteca.mostrarLibros();
-    } else if (eleccion == 2) {
-      string autor, titulo;
-      cout << "Introduzca el autor y el título del libro que desea pedir prestado: ";
-      cin >> autor >> titulo;
-      biblioteca.solicitarLibro(autor, titulo);
-    } else if (eleccion == 3) {
-      string autor, titulo;
-      cout << "Introduzca el autor y el título del libro que desea devolver: ";
-      cin >> autor >> titulo;
-      biblioteca.devolverLibro(autor, titulo);
-    } else if (eleccion == 4) {
-      amigoBiblioteca.mostrarLibrosPrestados(biblioteca);
-    } else if (eleccion == 5) {
-      break;
+  Validators valid;
+  int opcion=1;
+  while (opcion>=1 ||opcion<=3)
+  {
+    std::cout << "MENU" << std::endl;
+    std::cout << "1. Registrar" << std::endl;
+    std::cout << "2. Login" << std::endl;
+    std::cout << "3. Ingresar como usuario invitado" << std::endl;
+    std::cout << "4. Salir"<<std::endl;
+    std::cout << "Ingrese una opción (1-4): ";
+    std::cin >> opcion;
+    if (opcion==1)
+    {
+      biblioteca.agregarUsuario();
+    }
+    if (opcion==2)
+    {
+      if (valid.validarUsuario(biblioteca))
+      {
+        #include "menuComponent"
+      }
+      
+      
+    }
+    if (opcion==3)
+    {
+      #include "menuComponent"
+    }
+    if (opcion==4)
+    {
+      cout<<"saliendo....";
     }
   }
+  
+
+  
+
 
   return 0;
 

@@ -1,40 +1,38 @@
 #include "biblioteca.hpp"
 Biblioteca::Biblioteca(){
-  this->libros={
-      {Libro("Miguel de Cervantes","Don Quijote de la Mancha")},
-      {Libro("J.R.R. Tolkien","El Señor de los Anillos")},
-      {Libro("J.K. Rowling","Harry Potter y la Piedra Filosofal")},
-      {Libro("Suzanne Collins","Los Juegos del Hambre")},
-      {Libro("Harper Lee","Matar a un Ruiseñor")},
-    };
+  this->materialBibliograficoContainer.push_back(new Libro("Don Quijote de la Mancha","Miguel de Cervantes","arcz","13/04/1954","literario","1234-2134"));
+  this->usuariosContainer={
+    {UsuarioInvitado()},
+  };
 }
+void Biblioteca::agregarUsuario(){
+  std::string nombre,dni,correo,contrasena;
+  std::cout<<"ingrese nombre"<<std::endl;
+  std::cin>>nombre;
+  std::cout<<"ingrese dni"<<std::endl;
+  std::cin>>dni;
+  std::cout<<"ingrese correo"<<std::endl;
+  std::cin>>correo;
+  std::cout<<"ingrese contraseña"<<std::endl;
+  std::cin>>contrasena;
+  this->usuariosContainer.push_back(UsuarioPremium(nombre,dni,correo,contrasena));
+}
+
+void Biblioteca::agregarMaterialBibliografico(MaterialBibliografico& material){}
 
 void Biblioteca::mostrarLibros(){
-    for (auto libro:this->libros) {
-      std::cout<< libro<< std::endl;
-    }
-}
 
+}
+void Biblioteca::mostrarTodoMaterial(){
+  for (const auto& material:this->materialBibliograficoContainer)
+  {
+    material->imprimir();
+  }
+}
 void Biblioteca::solicitarLibro(std::string autor,std:: string titulo){
-    for (int i = 0; i < this->libros.size(); i++) {
-      if (this->libros[i].autor == autor && libros[i].titulo == titulo) {
-        if (libros[i].estaDisponible) {
-          libros[i].estaDisponible = false;
-          std::cout << "Libro prestado." << std::endl;
-        } else {
-          std::cout << "Libro no disponible." << std::endl;
-        }
-        return;
-      }
-    }
+
 }
 
 void Biblioteca::devolverLibro(std::string autor,std:: string titulo){
-    for (int i = 0; i < libros.size(); i++) {
-      if (libros[i].autor == autor && libros[i].titulo == titulo) {
-        libros[i].estaDisponible = true;
-        std::cout << "Libro devuelto." << std::endl;
-        return;
-      }
-    }
+
 }
