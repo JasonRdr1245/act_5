@@ -13,7 +13,9 @@ protected:
     std::string fechaPublicacion;
     bool estaDisponible;
 public:
-    friend bool BibliotecaService::isBook(MaterialBibliografico&);
+    friend class Usuario;
+    friend class Biblioteca;
+    friend bool BibliotecaService::isBook(MaterialBibliografico*);
     MaterialBibliografico();
     MaterialBibliografico(std::string _titulo,std::string _autor,std::string _editorial,std::string _fechaPublicacion);
     virtual void imprimir() const=0;

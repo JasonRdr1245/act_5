@@ -4,9 +4,12 @@ Libro::Libro(std::string _titulo,std::string _autor,std::string _editorial,std::
     this->estaDisponible=true;
 }
 std::ostream& operator<<(std::ostream& os, const Libro& libro) {
-    os << libro.autor <<std::endl;
-    os<< libro.titulo <<std::endl;
-    //todo
+    os<<"autor: "<< libro.autor <<std::endl;
+    os<<"titulo: "<< libro.titulo <<std::endl;
+    os<<"editorial: "<<libro.editorial<<std::endl;
+    os<<"fechaPublicacion: "<<libro.fechaPublicacion<<std::endl;
+    os<<"genero: "<<libro.genero<<std::endl;
+    os<<"isbn: "<<libro.isbn<<std::endl<<std::endl;
     return os;
 }
 std::string Libro::getIsbn(){

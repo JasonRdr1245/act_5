@@ -7,6 +7,8 @@ private:
 public:
     UsuarioInvitado();
     ~UsuarioInvitado();
+    void funcionVirtualPure()override;
+    float getPagoPrestamo();
 };
 
 

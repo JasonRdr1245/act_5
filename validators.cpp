@@ -4,7 +4,7 @@ Validators::Validators(/* args */)
 {
 }
 
-bool Validators::validarUsuario(Biblioteca& bliblioteca){
+bool Validators::validarUsuario(Biblioteca& bliblioteca,Usuario* user){
     std::string contrasena,correo;
     std::cout<<"ingrese correo:"<<std::endl;
     std::cin>>correo;
@@ -12,8 +12,9 @@ bool Validators::validarUsuario(Biblioteca& bliblioteca){
     std::cin>>contrasena;
     for (auto usuario:bliblioteca.usuariosContainer)
     {
-        if (usuario.correo==correo && usuario.contrasena==contrasena)
+        if (usuario->correo==correo && usuario->contrasena==contrasena)
         {
+            usuario=user;
             return true;
         }
         

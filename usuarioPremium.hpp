@@ -11,6 +11,7 @@ public:
     ~UsuarioPremium();
     float getDescuento();
     float getPagoMensual();
+    void funcionVirtualPure()override;
 };
 
 

@@ -29,6 +29,7 @@ int main() {
   Biblioteca biblioteca;
   BibliotecaService amigoBiblioteca;
   Validators valid;
+  Usuario* ptrUsuario;
   int opcion=1;
   while (opcion>=1 ||opcion<=3)
   {
@@ -45,27 +46,109 @@ int main() {
     }
     if (opcion==2)
     {
-      if (valid.validarUsuario(biblioteca))
+      if (valid.validarUsuario(biblioteca,ptrUsuario))
       {
-        #include "menuComponent"
+        int opcion2{1};
+        while (opcion2>=1 && opcion2<=4)
+        {
+            std::cout << "MENU" << std::endl;
+            std::cout << "1. Mostrar" << std::endl;
+            std::cout << "2. Prestarse" << std::endl;
+            std::cout << "3. Mostrar material prestado" << std::endl;
+            std::cout << "4. devolver material" << std::endl;
+            std::cout << "5. salir" << std::endl;
+            std::cout << "Ingrese una opción (1-3): ";
+            std::cin >> opcion2;
+            if (opcion2==1)
+            {
+                biblioteca.mostrarTodoMaterial();
+            }
+            if(opcion2==2){
+              std::string autor,titulo;
+              ptrUsuario=biblioteca.getUsuarios()[0];
+              std::cout<<"ingrese autor"<<std::endl;
+              cin.ignore();
+              getline(cin,autor);
+              std::cout<<"inrgese titulo"<<std::endl;
+              getline(cin,titulo);
+              ptrUsuario->solicitarPrestamo(biblioteca,autor,titulo);
+            }
+            if(opcion2==3){
+              biblioteca.mostrarMaterialPrestado();
+            }
+            if(opcion2==4){
+              std::string autor,titulo;
+              ptrUsuario=biblioteca.getUsuarios()[0];
+              std::cout<<"ingrese autor"<<std::endl;
+              cin.ignore();
+              getline(cin,autor);
+              std::cout<<"inrgese titulo"<<std::endl;
+              getline(cin,titulo);
+              ptrUsuario->devolverMaterial(biblioteca,autor,titulo);
+            }
+            
+            if(opcion2==5){
+              cout<<"saliendo"<<endl;
+              break;
+            }    
+            
+        }
       }
-      
       
     }
     if (opcion==3)
     {
-      #include "menuComponent"
+      int opcion2{1};
+      while (opcion2>=1 && opcion2<=5)
+      {
+        std::cout << "MENU" << std::endl;
+        std::cout << "1. Mostrar" << std::endl;
+        std::cout << "2. Prestarse" << std::endl;
+        std::cout << "3. Mostrar material prestado" << std::endl;
+        std::cout << "4. devolver material" << std::endl;
+        std::cout << "5. salir" << std::endl;
+        std::cout << "Ingrese una opción (1-5): ";
+        std::cin >> opcion2;
+        if (opcion2==1){
+            biblioteca.mostrarTodoMaterial();
+        }
+        if(opcion2==2){
+          std::string autor,titulo;
+          ptrUsuario=biblioteca.getUsuarios()[0];
+          std::cout<<"ingrese autor"<<std::endl;
+          cin.ignore();
+          getline(cin,autor);
+          std::cout<<"inrgese titulo"<<std::endl;
+          getline(cin,titulo);
+          ptrUsuario->solicitarPrestamo(biblioteca,autor,titulo);
+        }
+        if(opcion2==3){
+          biblioteca.mostrarMaterialPrestado();
+        }
+        if(opcion2==4){
+          std::string autor,titulo;
+          ptrUsuario=biblioteca.getUsuarios()[0];
+          std::cout<<"ingrese autor"<<std::endl;
+          cin.ignore();
+          getline(cin,autor);
+          std::cout<<"inrgese titulo"<<std::endl;
+          getline(cin,titulo);
+          ptrUsuario->devolverMaterial(biblioteca,autor,titulo);
+        }
+        
+        if(opcion2==5){
+          cout<<"saliendo"<<endl;
+          break;
+        }     
+      }
     }
+
     if (opcion==4)
     {
       cout<<"saliendo....";
+      break;
     }
+        
   }
-  
-
-  
-
-
   return 0;
-
 }

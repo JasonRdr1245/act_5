@@ -15,3 +15,4 @@ float UsuarioPremium::getPagoMensual(){
 UsuarioPremium::~UsuarioPremium()
 {
 }
+void UsuarioPremium::funcionVirtualPure(){}
